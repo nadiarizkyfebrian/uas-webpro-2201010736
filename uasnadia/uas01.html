@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kalkulator Ukuran Baju Wanita</title>
+  <style>
+    /* Stylesheet untuk tampilan halaman */
+  </style>
+</head>
+    <style>
+    /* Proyek di atas adalah sebuah kalkulator ukuran baju wanita yang menggunakan input tinggi badan dan berat badan untuk menentukan ukuran baju yang sesuai. 
+    Program ini menggunakan aturan sederhana untuk membagi ukuran menjadi tiga kategori, yaitu "pres body", "pass body", dan "oversize".
+    Selain itu, program juga memberikan rekomendasi apakah ukuran baju tersebut cocok dengan kategori tersebut
+    Selain memberikan rekomendasi kategori ukuran baju, program juga akan memberikan rekomendasi ukuran baju spesifik yang cocok berdasarkan hasil perhitungan, seperti XXS, XS, S, M, L, XL, dan seterusnya.
+    Hasil ukuran baju yang pas, rekomendasi kategori ukuran, dan rekomendasi ukuran spesifik akan ditampilkan di halaman web di bawah tombol "Hitung".
+    Pengguna dapat melihat ukuran baju yang cocok untuk mereka berdasarkan tinggi badan dan berat badan yang dimasukkan.
+    Proyek ini bertujuan untuk memberikan panduan awal dalam menentukan ukuran baju yang sesuai berdasarkan tinggi badan dan berat badan, serta memberikan informasi tentang kategori ukuran baju yang cocok dengan hasil perhitungan. 
+    */
+  </style>
+<body>
+  <h1>Cari Tahu Ukuran Baju</h1>
+  <h1>Yang Pas Buat Kamu Yukk Girlss!!</h1>
+  <div class="container">
+    <label for="height">Tinggi Badan (cm):</label>
+    <input type="number" id="height">
+
+    <label for="weight">Berat Badan (kg):</label>
+    <input type="number" id="weight">
+
+    <button onclick="calculateSize()">Hitung</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateSize() {
+      // Mengambil elemen HTML yang dibutuhkan
+      var heightInput = document.getElementById('height');
+      var weightInput = document.getElementById('weight');
+      var resultDiv = document.getElementById('result');
+
+      // Mendapatkan nilai tinggi dan berat badan dari input
+      var height = parseInt(heightInput.value);
+      var weight = parseInt(weightInput.value);
+
+      // Memeriksa apakah input valid
+      if (isNaN(height) || isNaN(weight)) {
+        resultDiv.innerHTML = 'Tinggi dan berat badan harus diisi dengan angka.';
+        return;
+      }
+
+      // Inisialisasi variabel untuk menyimpan ukuran baju yang pas, kategori ukuran, dan rekomendasi ukuran
+      var size = '';
+      var sizeCategory = '';
+      var sizeRecommendation = '';
+
+      // Menggunakan aturan sederhana untuk menentukan ukuran baju dan memberikan rekomendasi
+      if (height < 155 && weight < 45) {
+        size = 'XXS';
+        sizeCategory = 'Pres Body';
+        sizeRecommendation = 'Ukuran XXS pada kategori Pres Body cocok untuk Anda.';
+      } else if (height < 160 && weight < 50) {
+        size = 'XS';
+        sizeCategory = 'Pres Body';
+        sizeRecommendation = 'Ukuran XS pada kategori Pres Body cocok untuk Anda.';
+      } else if (height < 165 && weight < 55) {
+        size = 'S';
+        sizeCategory = 'Pass Body';
+        sizeRecommendation = 'Ukuran S pada kategori Pass Body cocok untuk Anda.';
+      } else if (height < 170 && weight < 60) {
+        size = 'M';
+        sizeCategory = 'Pass Body';
+        sizeRecommendation = 'Ukuran M pada kategori Pass Body cocok untuk Anda.';
+      } else if (height < 175 && weight < 65) {
+        size = 'L';
+        sizeCategory = 'Oversize';
+        sizeRecommendation = 'Ukuran L pada kategori Oversize cocok untuk Anda.';
+      } else if (height < 180 && weight < 70) {
+        size = 'XL';
+        sizeCategory = 'Oversize';
+        sizeRecommendation = 'Ukuran XL pada kategori Oversize cocok untuk Anda.';
+      } else {
+        var diff = Math.floor((height - 150) / 5);
+        size = 'XL+' + diff;
+        sizeCategory = 'Oversize';
+        sizeRecommendation = 'Ukuran XL+' + diff + ' pada kategori Oversize cocok untuk Anda.';
+      }
+
+      // Menampilkan hasil ukuran baju yang pas, kategori ukuran, dan rekomendasi ukuran di halaman
+      resultDiv.innerHTML = 'Ukuran baju yang pas untuk Anda: ' + size + '<br>' +
+        'Kategori ukuran: ' + sizeCategory + '<br>' +
+        sizeRecommendation;
+    }
+  </script>
+</body>
+</html>
